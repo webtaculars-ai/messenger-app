@@ -1,14 +1,17 @@
 import React, { useRef, useEffect } from "react";
+import { ChevronLeft } from "lucide-react";
 import { Friend, Message } from "../types";
 
 interface ChatWindowProps {
   selectedFriend: Friend;
   messages: Message[];
+  onBack: () => void;
 }
 
 export const ChatWindow: React.FC<ChatWindowProps> = ({
   selectedFriend,
   messages,
+  onBack,
 }) => {
   const chatEndRef = useRef<HTMLDivElement>(null);
 
@@ -22,6 +25,10 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
   return (
     <>
       <div className="bg-white p-4 flex items-center border-b">
+        <button className="mr-2" onClick={onBack}>
+          <ChevronLeft size={24} />
+        </button>
+
         <img
           src={selectedFriend.avatar}
           alt={selectedFriend.name}

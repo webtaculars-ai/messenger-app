@@ -12,7 +12,7 @@ export const FriendsList: React.FC<FriendsListProps> = ({
   selectedFriend,
   onSelectFriend,
 }) => (
-  <div className="w-1/4 bg-white border-r">
+  <div className="bg-white border-r">
     <h2 className="text-xl font-bold p-4 border-b">Friends</h2>
     <ul>
       {friends.map((friend) => (

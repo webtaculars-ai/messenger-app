@@ -22,19 +22,34 @@ const App: React.FC = () => {
     }
   };
 
+  const handleBack = () => {
+    setSelectedFriend(null);
+  };
+
   return (
-    <div className="flex h-screen bg-gray-100">
-      <FriendsList
-        friends={friends}
-        selectedFriend={selectedFriend}
-        onSelectFriend={setSelectedFriend}
-      />
-      <div className="flex-1 flex flex-col">
+    <div className="flex h-screen bg-gray-100 overflow-hidden">
+      <div
+        className={`w-full md:w-1/4 bg-white border-r ${
+          selectedFriend ? "hidden md:block" : ""
+        }`}
+      >
+        <FriendsList
+          friends={friends}
+          selectedFriend={selectedFriend}
+          onSelectFriend={setSelectedFriend}
+        />
+      </div>
+      <div
+        className={`w-full md:flex-1 flex flex-col ${
+          !selectedFriend ? "hidden md:flex" : ""
+        }`}
+      >
         {selectedFriend ? (
           <>
             <ChatWindow
               selectedFriend={selectedFriend}
               messages={messages[selectedFriend.id] || []}
+              onBack={() => setSelectedFriend(null)}
             />
             <MessageInput onSendMessage={handleSendMessage} />
           </>
