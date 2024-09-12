@@ -12,7 +12,10 @@ export const MessageInput: React.FC<MessageInputProps> = ({
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    onSendMessage(inputMessage);
+    if (inputMessage.trim()) {
+      onSendMessage(inputMessage);
+      setInputMessage("");
+    }
   };
 
   return (
