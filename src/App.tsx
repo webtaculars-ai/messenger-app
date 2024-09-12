@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FriendsList } from "./components/FriendsList";
 import { ChatWindow } from "./components/ChatWindow";
+import { MessageInput } from "./components/MessageInput";
 
 import { friends } from "./data/friends";
 import { Friend } from "./types";
@@ -19,6 +20,7 @@ const App: React.FC = () => {
         {selectedFriend ? (
           <>
             <ChatWindow selectedFriend={selectedFriend} />
+            <MessageInput />
           </>
         ) : (
           <div className="flex-1 flex items-center justify-center bg-gray-100">
