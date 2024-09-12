@@ -1,14 +1,22 @@
-// src/components/MessageInput.tsx
 import React, { useState } from "react";
 import { Send } from "lucide-react";
 
-interface MessageInputProps {}
+interface MessageInputProps {
+  onSendMessage: (message: string) => void;
+}
 
-export const MessageInput: React.FC<MessageInputProps> = () => {
+export const MessageInput: React.FC<MessageInputProps> = ({
+  onSendMessage,
+}) => {
   const [inputMessage, setInputMessage] = useState<string>("");
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    onSendMessage(inputMessage);
+  };
+
   return (
-    <form className="bg-white p-4 flex">
+    <form onSubmit={handleSubmit} className="bg-white p-4 flex">
       <input
         type="text"
         value={inputMessage}

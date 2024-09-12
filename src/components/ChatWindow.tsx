@@ -1,12 +1,15 @@
 import React from "react";
-import { Friend } from "../types";
+import { Friend, Message } from "../types";
 
 interface ChatWindowProps {
   selectedFriend: Friend;
+  messages: Message[];
 }
 
-const messages: { sender: string; text: string }[] = [];
-export const ChatWindow: React.FC<ChatWindowProps> = ({ selectedFriend }) => (
+export const ChatWindow: React.FC<ChatWindowProps> = ({
+  selectedFriend,
+  messages,
+}) => (
   <>
     <div className="bg-white p-4 flex items-center border-b">
       <img
